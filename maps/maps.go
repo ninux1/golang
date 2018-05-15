@@ -20,11 +20,19 @@ func main() {
 	//3rd way of declaring the maps and populating it.
 	colors := make(map[string]string)
 	colors["white"] = "0x9034993"
-
+	colors["Black"] = "0x3345432"
 	fmt.Println(colors)
 
-	//Deleting the element from map
-	delete(colors, "white")
+	printMap(colors)
 
-	fmt.Println("After deletion :", colors)
+	//Deleting the element from map
+	//delete(colors, "white")
+
+	//fmt.Println("After deletion :", colors)
+}
+
+func printMap(c map[string]string) {
+	for key, value := range c {
+		fmt.Println(key, value)
+	}
 }
