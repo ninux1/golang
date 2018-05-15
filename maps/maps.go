@@ -8,7 +8,7 @@ import (
 
 func main() {
 
-	// One way to declare maps
+	// One way to declare maps and initializing it
 	//colors := map[string]string{
 	//	"red":  "0xfffff",
 	//	"blue": "0xdecde0",
