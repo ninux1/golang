@@ -21,6 +21,7 @@ func main() {
 	colors := make(map[string]string)
 	colors["white"] = "0x9034993"
 	colors["Black"] = "0x3345432"
+
 	fmt.Println(colors)
 
 	printMap(colors)
