@@ -12,7 +12,6 @@ func main() {
 	position := binsearch(l, n, low, high)
 
 	fmt.Printf("The index of %d is %d\n", n, position)
-
 }
 
 func binsearch(l []int, n int, lowidx int, highidx int) int {
