@@ -1,0 +1,4 @@
+s := []int{3,4,5} // Initialize a slice with values
+s := []int{} // Initialize a slice with no values but allocate memory
+s := []int // Declare a slice with no memory allocated
+s := make([]int, 5, 10) // Initialize with no values but length of slice with total capacity of array.
