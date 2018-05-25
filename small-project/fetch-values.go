@@ -21,6 +21,8 @@ var age = map[string]int{
 
 func main() {
 
+	rand.Seed(time.Now().UnixNano())
+
 	name1 := "xyz"
 	name2 := "bar"
 
@@ -30,12 +32,17 @@ func main() {
 	go fetch(name1, c1)
 	go fetch(name2, c2)
 
-	fmt.Println("Age of", name1, <-c1) // This blocks untill there is a value on thi channel
-	fmt.Println("Age of", name2, <-c2)
-
+	select {
+	case a := <-c1:
+		fmt.Println("Age of", name1, a)
+	case a := <-c2:
+		fmt.Println("Age of", name2, a)
+	case <-time.After(6 * time.Second):
+		fmt.Println("Timed Out")
+	}
 }
 
 func fetch(name string, c chan int) {
-	time.Sleep(time.Duration(rand.Intn(3)) * time.Second)
+	time.Sleep(time.Duration(rand.Intn(3)) * time.Second) // Simulating some delay
 	c <- age[name]
 }
