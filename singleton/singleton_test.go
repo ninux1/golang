@@ -1,15 +1,28 @@
 package singleton
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestGetInstance(t *testing.T) {
-	counter1 := GetInstance()
-	if counter1 == nil {
+	instance1 := GetInstance()
+	if instance1 == nil {
 		t.Error("expected pointer to singleton after calling GetInstance(), not nil")
 	}
-	expectedCounter := counter1
+
+	calculateadd(instance1)
+	fmt.Println("The value of the counter of first instance is ", instance1.count)
+
+	instance2 := GetInstance()
+	if instance2 == nil {
+		t.Error("expected pointer to singleton after calling GetInstance(), not nil")
+	}
+	calculateadd(instance2)
+	fmt.Println("The value of the counter of second instance is ", instance2.count)
+
 }
-currentCount := counter1.AddOne()
-	if currentCount != 1 {
-		t.Errorf("After Calling for the first time to count, the count must be 1 but it is %d\n", currentCount)
+
+func calculateadd(i Singleton) {
+	i.AddOne()
 }
